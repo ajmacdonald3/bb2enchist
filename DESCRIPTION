@@ -1,0 +1,23 @@
+Package: bb2enchist
+Type: Package
+Title: Transform BandedBirds.org Data into Encounter Histories
+Version: 0.0.0.9000
+Authors@R: person("Amelia J.", "MacDonald", email = "ajmacdonald3@gmail.com",
+                  role = c("aut", "cre"))
+Description: This package transforms resighting data in the format submitted to
+    BandedBirds.org into encounter histories. Package functions allow dataframes
+    formatted as per BandedBirds.org to be returned as a dataframe of encounter
+    histories for each flagged Red Knot encountered. A variety of resighting
+    period intervals can be accommodated (i.e. day, month, year, custom).
+    Dataframes that can be exported as CSV files for further analysis in R and
+    dataframes that can be exported as INP files for analysis in Program MARK
+    are generated.
+URL: http://github.com/ajmacdonald3/bb2enchist
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    reshape,
+    dplyr,
+    lubridate
+RoxygenNote: 6.1.1
