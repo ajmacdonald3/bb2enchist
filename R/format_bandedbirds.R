@@ -1,19 +1,19 @@
 #' Tidy BandedBirds.org data
 #'
-#' @param bandedbirds A dataframe formatted as submitted to BandedBirds.org.
+#' @param x A dataframe formatted as submitted to BandedBirds.org.
 #' @param cert Was resight certainty consistently recorded? Defaults to TRUE.
-#' @param species Which species do you want to create encounter histories for? Use the four-letter AOU code.
+#' @param sp Which species do you want to create encounter histories for? Use the four-letter AOU codes.
 #' @return Dataframe with columns for ResightDate and FlagID (flag colour and
 #'         code).
 #' @examples
 #' format_bandedbirds(bandedbirds, cert = TRUE)
 
-format_bandedbirds <- function(bandedbirds, species = "species", cert = TRUE) {
+format_bandedbirds <- function(x, sp = NA, cert = TRUE) {
   if (cert == TRUE) {
 
   # manipulate the BandedBirds data into a format we can work with
-  resight_data <- bandedbirds %>%
-    filter(Species == "species") %>%
+  resight_data <- x %>%
+    filter(Species %in% sp) %>%
     filter(ResightCertainty == "C") %>% # if resight certainty was consistently recorded!
     select(ResightDate, FlagColor, FlagCode) %>%
     fill(ResightDate) %>%
@@ -27,8 +27,8 @@ format_bandedbirds <- function(bandedbirds, species = "species", cert = TRUE) {
   else {
 
     # manipulate the BandedBirds data into a format we can work with
-    resight_data <- bandedbirds %>%
-      filter(Species == "REKN") %>%
+    resight_data <- x %>%
+      filter(Species %in% sp) %>%
       filter(is.na(ResightCertainty) | ResightCertainty > 94) %>% # if resight certainly wasn't consistently
                                                                   # recorded :(
       filter(!str_detect(FlagCode, "Q")) %>% # if resight certainly wasn't consistently recorded :(
