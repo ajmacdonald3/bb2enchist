@@ -6,7 +6,7 @@
 #' @return Dataframe with columns for ResightDate and FlagID (flag colour and
 #'         code).
 #' @examples
-#' format_bandedbirds(bandedbirds, cert = TRUE)
+#' format_bandedbirds(x, sp = "REKN", cert = TRUE)
 
 format_bandedbirds <- function(x, sp = NA, cert = TRUE) {
   if (cert == TRUE) {
