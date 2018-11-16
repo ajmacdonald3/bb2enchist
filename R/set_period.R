@@ -1,4 +1,5 @@
-set_period <- function(x, period = NA, days = NA) {
+set_period <- function(x, period = NA, rsint = y) {
+
   x$ResightDate <- mdy(x$ResightDate)
   if(period == "year") {
 
@@ -20,7 +21,10 @@ set_period <- function(x, period = NA, days = NA) {
           select(ResightPeriod, FlagID)
 
       } else
-        NA
+        resight_data <- x %>%
+          mutate(ResightPeriod = lubridate::round_date(ResightDate, rsint)) %>%
+          select(ResightPeriod, FlagID)
+
 
   assign("resight_data", resight_data, envir = globalenv())
 
