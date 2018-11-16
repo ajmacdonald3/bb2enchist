@@ -4,10 +4,12 @@
 \alias{format_bandedbirds}
 \title{Tidy BandedBirds.org data}
 \usage{
-format_bandedbirds(bandedbirds, cert = TRUE)
+format_bandedbirds(x, sp = NA, cert = TRUE)
 }
 \arguments{
-\item{bandedbirds}{A dataframe formatted as submitted to BandedBirds.org.}
+\item{x}{A dataframe formatted as submitted to BandedBirds.org.}
+
+\item{sp}{Which species do you want to create encounter histories for? Use the four-letter AOU codes.}
 
 \item{cert}{Was resight certainty consistently recorded? Defaults to TRUE.}
 }
@@ -19,5 +21,5 @@ Dataframe with columns for ResightDate and FlagID (flag colour and
 Tidy BandedBirds.org data
 }
 \examples{
-format_bandedbirds(bandedbirds, cert = TRUE)
+format_bandedbirds(bandedbirds, sp = "REKN", cert = TRUE)
 }
