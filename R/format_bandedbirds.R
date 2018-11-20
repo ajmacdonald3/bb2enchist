@@ -29,8 +29,6 @@ format_bandedbirds <- function(x, sp = NA, cert = TRUE) {
     # manipulate the BandedBirds data into a format we can work with
     resight_data <- x %>%
       filter(Species %in% sp) %>% # keeps only species of interest
-      filter(is.na(ResightCertainty) | ResightCertainty > 94) %>% # if resight certainly wasn't consistently
-                                                                  # recorded :(
       filter(!str_detect(FlagCode, "Q")) %>% # if resight certainly wasn't consistently recorded :(
       select(ResightDate, FlagColor, FlagCode) %>% # keeps only these columns
       fill(ResightDate) %>% # fills in date for every observation
