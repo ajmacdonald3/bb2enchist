@@ -1,4 +1,4 @@
-# bb2enchist: Transform [BandedBirds.org](bandedbirds.org) Data into Encounter Histories
+# bb2enchist: Transform [BandedBirds.org](www.bandedbirds.org) Data into Encounter Histories
 
 Amie MacDonald
 
