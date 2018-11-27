@@ -19,5 +19,7 @@ LazyData: true
 Imports: 
     reshape,
     dplyr,
+    stringr,
+    tidyr,
     lubridate
 RoxygenNote: 6.1.1
