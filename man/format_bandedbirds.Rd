@@ -4,10 +4,12 @@
 \alias{format_bandedbirds}
 \title{Tidy BandedBirds.org data}
 \usage{
-format_bandedbirds(x, sp = NA, cert = TRUE)
+format_bandedbirds(x, new_df = y, sp = NA, cert = TRUE)
 }
 \arguments{
 \item{x}{A dataframe formatted as submitted to BandedBirds.org.}
+
+\item{new_df}{A name for the new dataframe that will be created.}
 
 \item{sp}{Which species do you want to create encounter histories for? Use the four-letter AOU codes.}
 
@@ -21,5 +23,5 @@ Dataframe with columns for ResightDate and FlagID (flag colour and
 Tidy BandedBirds.org data
 }
 \examples{
-format_bandedbirds(bandedbirds, sp = "REKN", cert = TRUE)
+format_bandedbirds(bandedbirds, new_df = resight_data, sp = "REKN", cert = TRUE)
 }
