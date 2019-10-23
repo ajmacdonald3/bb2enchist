@@ -81,16 +81,19 @@ format_atlcan <- function(x, project = y){
            LapsedMinutes, Observations, `N/R`, BMIMolts, BMIExtentID, BMIStage, PlumageID, PrimaryMolts,
            P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, Fats, FatScore, SizeAdjMass, FatGram, FatAdjGram,
            FatMassRatio, WingSpan, Blood, SampleNum, TrackerLogs, TrackerTypeID, TrackerID, Status) %>%
-    arrange(CaptureDate) %>%
+    arrange(CaptureDate, CaptureTime) %>%
     group_by(CaptureDate) %>%
     mutate_at(vars(1:5), list(~replace(., duplicated(.), NA))) %>%
     ungroup() %>%
     mutate_at(vars(CaptureDate), list(~replace(., duplicated(.), NA)))
 
-
   bandedbirds_data$CaptureDate <- format(as.Date(bandedbirds_data$CaptureDate), "%d/%m/%y")
   bandedbirds_data$CaptureTime <- ymd_hms(bandedbirds_data$CaptureTime)
   bandedbirds_data$CaptureTime <- format(bandedbirds_data$CaptureTime, "%H:%M")
+
+  bandedbirds_data <- bandedbirds_data %>%
+    mutate(CaptureDate = case_when(!is.na(CaptureDate) ~ paste(CaptureDate, CaptureTime))) %>%
+    mutate(CaptureDate = str_replace_all(CaptureDate, " NA", ""))
 
   assign("bandedbirds_data", bandedbirds_data, envir = globalenv())
 
