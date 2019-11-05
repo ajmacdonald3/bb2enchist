@@ -18,5 +18,5 @@ A dataframe of banding data formatted for submission to BandedBirds.org
 Format Atlantic Canada Shorebirds banding data for BandedBirds.org
 }
 \examples{
-format_atlcan(banding_data, project = 79)
+format_atlcan(banding_data, project = 99)
 }

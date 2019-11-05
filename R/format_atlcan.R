@@ -4,7 +4,7 @@
 #' @param y The ProjectID number assigned by BandedBirds.org
 #' @return A dataframe of banding data formatted for submission to BandedBirds.org
 #' @examples
-#' format_atlcan(banding_data, project = 79)
+#' format_atlcan(banding_data, project = 99)
 
 format_atlcan <- function(x, project = y){
 
@@ -14,7 +14,7 @@ format_atlcan <- function(x, project = y){
     mutate(CaptureMethodID = case_when(Site == "JM" ~ "FundyPT",
                                        Site == "PCAP" ~ "Mist")) %>%
     mutate(LocationID = case_when(Site == "JM" ~ "JOHNSONSMILL",
-                                  Site == "PCAP" ~ "PETIT_CAP")) %>%
+                                  Site == "PCAP" ~ "PETIT_CAP_NORTHUMBERLAND")) %>%
     mutate(Latitude = case_when(Site == "JM" ~ 45.772264,
                                 Site == "PCAP" ~ 46.178008)) %>%
     mutate(Longitude = case_when(Site == "JM" ~ -64.511386,
